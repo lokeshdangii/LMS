@@ -1,4 +1,4 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,17 +18,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <div class = "navbar-header">
-                <a class="navbar-brand" href="signup.php">Library Management System (IIPS)</a>
+                <a class="navbar-brand" href="index.php">Library Management System (IIPS)</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Admin Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Student Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Register Login</a>
+                    <a class="nav-link" href="index.php">Admin Login</a>
                 </li>
 
             </ul>
@@ -54,33 +48,46 @@
             </ul>
         </div>
         <div class="col-md-8" id="main_content">
-            <center><h3>Student Registration Form</h3></center>
+            <center><h3>Admin Login Form</h3></center>
             <form action="register.php" method="post">
+            
                 <div class="form-group">
-                    <label for="name">Full Name:</label>
+                    <label for="name">Username:</label>
                     <input type="text" name="name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="name">Emai Id:</label>
-                    <input type="text" name="email" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="name">Password:</label>
                     <input type="text" name="password" class="form-control" required>
                 </div>
-                <div class="form-group">
-                    <label for="name">Mobile Number:</label>
-                    <input type="text" name="mobile" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="name">Address:</label>
-                    <textarea rows="3" cols="40" class="form-control" name="address"></textarea>
-                </div> 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <br>
+                <button type="Login" class="btn btn-primary">Login</button>
+                <button type="Cancel" class="btn btn-primary">Cancel</button>
             </form>
-            
+            <?php 
+				if(isset($_POST['login'])){
+					$connection = mysqli_connect("localhost","root","");
+					$db = mysqli_select_db($connection,"library");
+					$query = "select * from admin where username = '$_POST[username]'";
+					$query_run = mysqli_query($connection,$query);
+					while ($row = mysqli_fetch_assoc($query_run)) {
+						if($row['username'] == $_POST[username]){
+							if($row['password'] == $_POST['password']){
+								$_SESSION['username'] =  $row['username'];
+								$_SESSION['password'] =  $row['password'];
+								$_SESSION['id'] =  $row['id'];
+								header("Location: admin_dashboard.php");
+							}
+							else{
+								?>
+								<br><br><center><span class="alert-danger">Wrong Password !!</span></center>
+								<?php
+							}
+						}
+					}
+				}
+			?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
-</html> -->
+</html>

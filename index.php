@@ -66,14 +66,14 @@
             <?php 
 				if(isset($_POST['login'])){
 					$connection = mysqli_connect("localhost","root","");
-					$db = mysqli_select_db($connection,"lms");
-					$query = "select * from users where email = '$_POST[email]'";
+					$db = mysqli_select_db($connection,"library");
+					$query = "select * from admin where username = '$_POST[username]'";
 					$query_run = mysqli_query($connection,$query);
 					while ($row = mysqli_fetch_assoc($query_run)) {
-						if($row['email'] == $_POST['email']){
+						if($row['username'] == $_POST[username]){
 							if($row['password'] == $_POST['password']){
-								$_SESSION['name'] =  $row['name'];
-								$_SESSION['email'] =  $row['email'];
+								$_SESSION['username'] =  $row['username'];
+								$_SESSION['password'] =  $row['password'];
 								$_SESSION['id'] =  $row['id'];
 								header("Location: admin_dashboard.php");
 							}
