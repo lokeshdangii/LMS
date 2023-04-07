@@ -1,15 +1,20 @@
 <?php
-	require("functions.php");
 	session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Dashboard</title>
+	<title>Issue Book</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width,intial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-4.4.1/css/bootstrap.min.css">
   	<script type="text/javascript" src="../bootstrap-4.4.1/js/juqery_latest.js"></script>
   	<script type="text/javascript" src="../bootstrap-4.4.1/js/bootstrap.min.js"></script>
+  	<script type="text/javascript">
+  		function alertMsg(){
+  			alert(Book added successfully...);
+  			window.location.href = "admin_dashboard.php";
+  		}
+  	</script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,9 +28,9 @@
 		      <li class="nav-item dropdown">
 	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown">My Profile </a>
 	        	<div class="dropdown-menu">
-	        		<a class="dropdown-item" href="view_profile.php">View Profile</a>
+	        		<a class="dropdown-item" href="">View Profile</a>
 	        		<div class="dropdown-divider"></div>
-	        		<a class="dropdown-item" href="edit_profile.php">Edit Profile</a>
+	        		<a class="dropdown-item" href="#">Edit Profile</a>
 	        		<div class="dropdown-divider"></div>
 	        		<a class="dropdown-item" href="change_password.php">Change Password</a>
 	        	</div>
@@ -74,56 +79,54 @@
 		</div>
 	</nav><br>
 	<span><marquee>This is library Management System. Library opens at 11:00 AM and close at 5:00 PM</marquee></span><br><br>
-	<div class="row">
-		 <!-- <div class="col-md-3" style="margin: 0px">
-			<div class="card bg-light" style="width: 300px">
-				<div class="card-header">Registered User</div>
-				<div class="card-body">
-					<p class="card-text">No. total Users: here comes <php echo get_user_count();?></p>
-					<a class="btn btn-danger" href="Regusers.php" target="_blank">View Registered Users</a>
-				</div>
+		<center><h4>Issue Book</h4><br></center>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+				<form action="" method="post">
+					<div class="form-group">
+						<label for="book_id">Book Acc Number/Book ID:</label>
+						<input type="text" name="book_id" class="form-control" required>
+					</div>
+					<!-- <div class="form-group">
+						<label for="book_name">Book Name:</label>
+						<input type="text" name="book_name" class="form-control" required>
+					</div> -->
+		
+					<div class="form-group">
+						<label for="stu_id">Student ID:</label>
+						<input type="text" name="stu_id" class="form-control" required>
+					</div>
+					<!-- <div class="form-group">
+						<label for="name">Student Name:</label>
+						<input type="text" name="name" class="form-control" >
+					</div> -->
+					<div class="form-group">
+						<label for="issue_date">Issue Date:</label>
+						<input type="text" name="issue_date" class="form-control" value="<?php echo date("yy-m-d");?>" required>
+					</div>
+					<button type="submit" name="issue_book" class="btn btn-primary">Issue Book</button>
+				</form>
 			</div>
-		</div> -->
-		<div class="col-md-3" style="margin: 0px">
-			<div class="card bg-light" style="width: 300px">
-				<div class="card-header">Total Book</div>
-				<div class="card-body">
-					<p class="card-text">No of books available: <?php echo get_book_count();?></p>
-					<a class="btn btn-success" href="Regbooks.php" target="_blank">View All Books</a>
-				</div>
-			</div>
+			<div class="col-md-4"></div>
 		</div>
-		<div class="col-md-3" style="margin: 0px">
-			<div class="card bg-light" style="width: 300px">
-				<div class="card-header">Student</div>
-				<div class="card-body">
-					<p class="card-text">No of Total Students: <?php echo get_category_count();?></p>
-					<a class="btn btn-warning" href="Regstudent.php" target="_blank">View Students</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3" style="margin: 0px">
-			<div class="card bg-light" style="width: 300px">
-				<div class="card-header">No. of Faculty</div>
-				<div class="card-body">
-					<p class="card-text">No of Faculty: <?php echo get_author_count();?></p>
-					<a class="btn btn-primary" href="Regfaculty.php" target="_blank">View Faculties</a>
-				</div>
-			</div>
-		</div>
-	</div><br><br>
-	<div class="row">
-		<div class="col-md-3" style="margin: 0px">
-			<div class="card bg-light" style="width: 300px">
-				<div class="card-header">Book Issued</div>
-				<div class="card-body">
-					<p class="card-text">No of book issued: <?php echo get_issue_book_count();?></p>
-					<a class="btn btn-success" href="view_issued_book.php" target="_blank">View Issued Books</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3"></div>
-		<div class="col-md-3"></div>
-	</div>
 </body>
 </html>
+
+<?php
+	if(isset($_POST['issue_book']))
+	{
+		$connection = mysqli_connect("localhost","root","");
+		$db = mysqli_select_db($connection,"lmsdb");
+		$query = "insert into issued_book values (null,$_POST[book_id],'$_POST[stu_id]',null,1,'$_POST[issue_date]')";
+		$query_run = mysqli_query($connection,$query);
+		#header("Location:admin_dashboard.php");
+	}
+?> 
+
+<!-- 
+	book_name, = 
+	name = $_POST[name]
+	INSERT INTO `issued_book` (`s_no`, `book_id`, `book_name`, `stu_id`, `name`, `fac_id`, `status`, `issue_date`) VALUES ('1', '24945', 'Mastering Cloud Computing', 'IC-2K20-43', 'Lokesh Dangi', '2', '1', '2023-04-07');
+	INSERT INTO `issued_book` (`book_id`, `stu_id`, `fac_id`, `status`, `issue_date`) VALUES ('123', '11', NULL, '1', '2023-04-07');
+ -->
