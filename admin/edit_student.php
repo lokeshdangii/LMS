@@ -7,7 +7,7 @@
 	$name = "";
 	$email = "";
 	$mobile = "";
-	$query = "select * from student where stu_id = $_GET[sid]";
+	$query = "select * from student where mobile = $_GET[sid]";
 	$query_run = mysqli_query($connection,$query);
 	while ($row = mysqli_fetch_assoc($query_run)){
 		$stu_id = $row['stu_id'];
@@ -83,8 +83,8 @@
 	if(isset($_POST['update_stu'])){
 		$connection = mysqli_connect("localhost","root","");
 		$db = mysqli_select_db($connection,"lmsdb");
-		$query = "update student set name = '$_POST[name]', mobile = '$_POST[mobile], email= '$_POST[email] where stu_id = $_GET[sid]";
+		$query = "update student set stu_id ='$_POST[stu_id]',  name = '$_POST[name]', mobile = $_POST[mobile], email= '$_POST[email]' where mobile = $_GET[sid]";
 		$query_run = mysqli_query($connection,$query);
-		header("location:manage_cat.php");
+		header("location:manage_student.php");
 	}
 ?>

@@ -18,17 +18,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Manage Book</title>
+	<title>Return Book</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width,intial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-4.4.1/css/bootstrap.min.css">
   	<script type="text/javascript" src="../bootstrap-4.4.1/js/juqery_latest.js"></script>
   	<script type="text/javascript" src="../bootstrap-4.4.1/js/bootstrap.min.js"></script>
-  	<script type="text/javascript">
-  		function alertMsg(){
-  			alert(Book added successfully...);
-  			window.location.href = "admin_dashboard.php";
-  		}
-  	</script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -98,34 +92,33 @@
 		</div>
 	</nav><br>
 	<span><marquee>This is library Management System. Library opens at 11:00 AM and close at 5:00 PM</marquee></span><br><br>
-		<center><h4>Manage Books</h4><br></center>
+		<center><h4>Return Book</h4><br></center>
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<table class="table table-bordered table-hover">
 					<thead>
 						<tr>
-							<th>Acc No</th>
-							<th>Book Title</th>
-							<th>Author</th>
-							<th>Publisher</th>
-							<th>Action</th>
+							<th>Book Acc Number</th>
+							<th>Student Roll Number</th>
+							<th>Issue Date</th>
 						</tr>
 					</thead>
 					<?php
 						$connection = mysqli_connect("localhost","root","");
 						$db = mysqli_select_db($connection,"lmsdb");
-						$query = "select * from book";
+						$query = "select * from issued_book";
 						$query_run = mysqli_query($connection,$query);
 						while ($row = mysqli_fetch_assoc($query_run)){
 							?>
 							<tr>
+							<tr>
 								<td><?php echo $row['book_id'];?></td>
-								<td><?php echo $row['book_name'];?></td>
-								<td><?php echo $row['author'];?></td>
-								<td><?php echo $row['publisher'];?></td>
-								<td><button class="btn" name=""><a href="edit_book.php?bn=<?php echo $row['book_id'];?>">Edit</a></button>
-								<button class="btn"><a href="delete_book.php?bn=<?php echo $row['book_id'];?>">Delete</a></button></td>
+								<td><?php echo $row['stu_id'];?></td>
+								<td><?php echo $row['issue_date'];?></td>
+			
+								<td><button class="btn"><a href="return_book.php?bid=<?php echo $row['book_id'];?>">Return Book</a></button>
+						
 							</tr>
 							<?php
 						}
@@ -136,3 +129,4 @@
 		</div>
 </body>
 </html>
+

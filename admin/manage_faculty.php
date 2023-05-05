@@ -3,7 +3,7 @@
 	session_start();
 	#fetch data from database
 	$connection = mysqli_connect("localhost","root","");
-	$db = mysqli_select_db($connection,"lms");
+	$db = mysqli_select_db($connection,"lmsdb");
 	$name = "";
 	$email = "";
 	$mobile = "";
@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Manage Author</title>
+	<title>Manage Faculty</title>
 	<meta charset="utf-8" name="viewport" content="width=device-width,intial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-4.4.1/css/bootstrap.min.css">
   	<script type="text/javascript" src="../bootstrap-4.4.1/js/juqery_latest.js"></script>
@@ -75,13 +75,18 @@
 		      <li class="nav-item dropdown">
 	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown">Faculty</a>
 	        	<div class="dropdown-menu">
-	        		<a class="dropdown-item" href="add_author.php">Add New Faculty</a>
+	        		<a class="dropdown-item" href="add_faculty.php">Add New Faculty</a>
 	        		<div class="dropdown-divider"></div>
-	        		<a class="dropdown-item" href="manage_author.php">Manage Faculty</a>
+	        		<a class="dropdown-item" href="manage_faculty.php">Manage Faculty</a>
 	        	</div>
 		      </li>
-	          <li class="nav-item">
-		        <a class="nav-link" href="issue_book.php">Issue Book</a>
+              <li class="nav-item dropdown">
+	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown">Issue/Return</a>
+	        	<div class="dropdown-menu">
+	        		<a class="dropdown-item" href="issue_book.php">Issue Book</a>
+	        		<div class="dropdown-divider"></div>
+	        		<a class="dropdown-item" href="manage_return.php">Return Book</a>
+	        	</div>
 		      </li>
 		    </ul>
 		</div>

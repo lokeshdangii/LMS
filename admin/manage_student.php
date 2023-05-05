@@ -4,17 +4,15 @@
 	#fetch data from database
 	$connection = mysqli_connect("localhost","root","");
 	$db = mysqli_select_db($connection,"lmsdb");
-	$stu_id = "";
 	$name = "";
-	$mobile = "";
 	$email = "";
-	$query = "select * from student where stu_id = '$_SESSION[stu_id]'";  #
+	$mobile = "";
+	$query = "select * from admins where email = '$_SESSION[email]'";
 	$query_run = mysqli_query($connection,$query);
 	while ($row = mysqli_fetch_assoc($query_run)){
-		$stu_id = $row['stu_id'];
 		$name = $row['name'];
-		$mobile = $row['mobile'];
 		$email = $row['email'];
+		$mobile = $row['mobile'];
 	}
 ?>
 <!DOCTYPE html>
@@ -82,8 +80,13 @@
 	        		<a class="dropdown-item" href="manage_faculty.php">Manage Faculty</a>
 	        	</div>
 		      </li>
-	          <li class="nav-item">
-		        <a class="nav-link" href="issue_book.php">Issue Book</a>
+			  <li class="nav-item dropdown">
+	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown">Issue/Return</a>
+	        	<div class="dropdown-menu">
+	        		<a class="dropdown-item" href="issue_book.php">Issue Book</a>
+	        		<div class="dropdown-divider"></div>
+	        		<a class="dropdown-item" href="manage_return.php">Return Book</a>
+	        	</div>
 		      </li>
 		    </ul>
 		</div>
@@ -115,8 +118,8 @@
 								<td><?php echo $row['name'];?></td>
 								<td><?php echo $row['mobile'];?></td>
 								<td><?php echo $row['email'];?></td>
-								<td><button class="btn"><a href="edit_student.php?sid=<?php echo $row['stu_id'];?>">Edit</a></button>
-								<button class="btn"><a href="delete_student.php?sid=<?php echo $row['stu_id'];?>">Delete</a></button></td>
+								<td><button class="btn"><a href="edit_student.php?sid=<?php echo $row['mobile'];?>">Edit</a></button>
+								<button class="btn"><a href="delete_student.php?sid=<?php echo $row['mobile'];?>">Delete</a></button></td>
 							</tr>
 							<?php
 						}

@@ -83,7 +83,7 @@
 	if(isset($_POST['update'])){
 		$connection = mysqli_connect("localhost","root","");
 		$db = mysqli_select_db($connection,"lmsdb");
-		$query = "update book set book_name = $_POST[book_name],author = $_POST[author],publisher = $_POST[publisher] where book_id = $_GET[bn]";
+		$query = "update book set book_name = '$_POST[book_name]', author = '$_POST[author]', publisher = '$_POST[publisher]' where book_id = $_GET[bn]";
 		$query_run = mysqli_query($connection,$query);
 		header("location:manage_book.php");
 	}

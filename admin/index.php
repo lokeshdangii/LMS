@@ -47,8 +47,8 @@
             </ul>
             <h5>What we provide ?</h5>
             <ul>
-                <li>All Stream Books</li>
-                <li>Projects</li>
+                <li>All Streams Books</li>
+                <li>Projects Report</li>
                 <li>E-library</li>
                 <li>Well Sitting Facility</li>
                 <li>Peacefull Environment</li>

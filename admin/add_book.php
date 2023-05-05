@@ -86,8 +86,13 @@
 	        		<a class="dropdown-item" href="manage_faculty.php">Manage Faculty</a>
 	        	</div>
 		      </li>
-	          <li class="nav-item">
-		        <a class="nav-link" href="issue_book.php">Issue Book</a>
+	          <li class="nav-item dropdown">
+	        	<a class="nav-link dropdown-toggle" data-toggle="dropdown">Issue/Return</a>
+	        	<div class="dropdown-menu">
+	        		<a class="dropdown-item" href="issue_book.php">Issue Book</a>
+	        		<div class="dropdown-divider"></div>
+	        		<a class="dropdown-item" href="manage_return.php">Return Book</a>
+	        	</div>
 		      </li>
 		    </ul>
 		</div>
