@@ -52,7 +52,7 @@
 		</div>
 	</nav><br>
 	<span><marquee>This is library mangement system. Library opens at 8:00 AM and close at 8:00 PM</marquee></span><br><br>
-		<center><h4>Edit Book</h4><br></center>
+		<center><h4>Edit Faculty</h4><br></center>
 		<div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4">

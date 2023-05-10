@@ -56,7 +56,7 @@
 							<th>Book Title</th>
 							<th>Author</th>
 							<th>Student Roll No</th>
-							<th>Student ID</th>
+							<th>Student Name</th>
 						</tr>
 				
 					<?php
