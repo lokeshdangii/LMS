@@ -2,7 +2,7 @@
 	require("functions.php");
 	session_start();
 	#fetch data from database
-	$connection = mysqli_connect("localhost","root","");
+	$connection = mysqli_connect("13.51.163.201","x8t9aWV3q8Ck","x8t9aWV3q8Ck");
 	$db = mysqli_select_db($connection,"lmsdb");
 	$name = "";
 	$email = "";
@@ -134,7 +134,7 @@
 <?php
 	if(isset($_POST['add_book']))
 	{
-		$connection = mysqli_connect("localhost","root","");
+		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$query = "insert into book values($_POST[book_id],'$_POST[book_name]','$_POST[author]','$_POST[publisher]',$_POST[cl_no])";
 		$query_run = mysqli_query($connection,$query);

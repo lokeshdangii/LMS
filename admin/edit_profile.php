@@ -2,7 +2,7 @@
 	require("functions.php");
 	session_start();
 	#fetch data from database
-	$connection = mysqli_connect("localhost","root","");
+	$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
 	$db = mysqli_select_db($connection,"lmsdb");
 	$name = "";
 	$email = "";

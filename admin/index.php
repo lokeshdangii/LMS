@@ -70,7 +70,7 @@
 			</form>
 			<?php 
 				if(isset($_POST['login'])){
-					$connection = mysqli_connect("localhost","root","");
+					$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
 					$db = mysqli_select_db($connection,"lmsdb");
 					$query = "select * from admins where email = '$_POST[email]'";
 					$query_run = mysqli_query($connection,$query);
