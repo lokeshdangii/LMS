@@ -1,6 +1,6 @@
 <?php
 	function get_author_count(){
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$author_count = 0;
 		$query = "select count(*) as author_count from faculty";
@@ -12,7 +12,7 @@
 	}
 
 	// function get_user_count(){
-	// 	$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+	// 	$connection = mysqli_connect("localhost", "root", "");
 	// 	$db = mysqli_select_db($connection,"lmsdb");
 	// 	$user_count = 0;
 	// 	$query = "select count(*) as user_count from users";
@@ -24,7 +24,7 @@
 	// }
 
 	function get_book_count(){
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$book_count = 0;
 		$query = "select count(*) as book_count from book";
@@ -36,7 +36,7 @@
 	}
 
 	function get_issue_book_count(){
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$issue_book_count = 0;
 		$query = "select count(*) as issue_book_count from issued_book";
@@ -48,7 +48,7 @@
 	}
 
 	function get_category_count(){
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$cat_count = 0;
 		$query = "select count(*) as cat_count from student";
