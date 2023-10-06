@@ -121,7 +121,7 @@
 <?php
 	if(isset($_POST['issue_book']))
 	{
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$query = "insert into issued_book values (null,$_POST[book_id],'$_POST[stu_id]',null,1,'$_POST[issue_date]')";
 		$query_run = mysqli_query($connection,$query);
