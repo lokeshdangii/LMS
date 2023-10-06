@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	#fetch data from database
-	$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+	$connection = mysqli_connect("localhost", "root", "");
 	$db = mysqli_select_db($connection,"lmsdb");
 	$book_id = "";
 	$book_name = "";

@@ -1,5 +1,5 @@
 <?php
-	$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+	$connection = mysqli_connect("localhost", "root", "");
 	$db = mysqli_select_db($connection,"lmsdb");
 	$query = "update admins set name = '$_POST[name]',email = '$_POST[email]',mobile = '$_POST[mobile]'";
 	$query_run = mysqli_query($connection,$query);
