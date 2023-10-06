@@ -82,7 +82,7 @@
 </html>
 <?php
 	if(isset($_POST['update_faculty'])){
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$query = "update faculty set name = '$_POST[name]',mobile =$_POST[mobile], email = '$_POST[email]'  where fac_id = $_GET[fid]";
 		$query_run = mysqli_query($connection,$query);
