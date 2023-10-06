@@ -2,7 +2,7 @@
 	require("functions.php");
 	session_start();
 	#fetch data from database
-	$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+	$connection = mysqli_connect("localhost", "root", "");
 	$db = mysqli_select_db($connection,"lmsdb");
 	$name = "";
 	$email = "";
@@ -131,7 +131,7 @@
 <?php
 	if(isset($_POST['add_stu']))
 	{
-		$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+		$connection = mysqli_connect("localhost", "root", "");
 		$db = mysqli_select_db($connection,"lmsdb");
 		$query = "insert into student values('$_POST[stu_id]','$_POST[name]',$_POST[mobile],'$_POST[email]')";
 		$query_run = mysqli_query($connection,$query);
