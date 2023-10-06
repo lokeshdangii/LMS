@@ -2,7 +2,7 @@
 	require("functions.php");
 	session_start();
 	#fetch data from database
-	$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+	$connection = mysqli_connect("localhost", "root", "");
 	$db = mysqli_select_db($connection,"lmsdb");
 	$name = "";
 	$email = "";
@@ -107,7 +107,7 @@
 						</tr>
 					</thead>
 					<?php
-						$connection = mysqli_connect("13.51.163.201","phpmyadmin","x8t9aWV3q8Ck");
+						$connection = mysqli_connect("localhost", "root", "");
 						$db = mysqli_select_db($connection,"lmsdb");
 						$query = "select * from student";
 						$query_run = mysqli_query($connection,$query);
